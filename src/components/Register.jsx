@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { postToAPI } from '../utils/API';
+import { Link } from 'react-router-dom';
+import bg from '../assets/bg.png';
 
 const Register = () => {
 
@@ -55,14 +57,23 @@ const Register = () => {
             {success && <div style={{ color: 'green' }}>{success}</div>}
             <div className='form'>
                 <p> Register </p>
-                <input placeholder='Username' onChange={handleChange(setUsername)} value={username}/>
-                <input placeholder='Email'onChange={handleChange(setEmail)} value={email}/>
-                <select value={role} onChange={handleChange(setRole)}>
-                    <option value='0'> Reader </option>
-                    <option value='1'> Author </option>
-                </select>
-                <input type='password' placeholder='Password'onChange={handleChange(setPassword)} value={password}/>
-                <button onClick={handleSubmit}> Sign Up </button>
+                <input className='search-input' placeholder='Username' onChange={handleChange(setUsername)} value={username}/>
+                <input className='search-input' placeholder='Email'onChange={handleChange(setEmail)} value={email}/>
+                <div className='select-container'>
+                    <select id='role' value={role} onChange={handleChange(setRole)} className='select-dropdown'>
+                        <option value='0'>Reader</option>
+                        <option value='1'>Author</option>
+                    </select>
+                </div>
+                <input className='search-input' type='password' placeholder='Password'onChange={handleChange(setPassword)} value={password}/>
+                <button className='button' onClick={handleSubmit}> Sign Up </button>
+                <p>Already have an account? <Link to='/login'> Log In </Link></p>
+            </div>
+
+            <p className='slogan'> Read. Share. Connect. </p>
+
+            <div className='bg'>
+                <img src={bg}/>
             </div>
 
         </div>

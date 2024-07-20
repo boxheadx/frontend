@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { postToAPI } from '../utils/API';
+import { Link, useNavigate } from 'react-router-dom';
+import getUser from '../utils/Auth';
+import bg from '../assets/bg.png';
 
-const Login = () => {
+const Login = ({user, setUser}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
+    const navigate = useNavigate();
 
     const handleChange = (setter) => (e) =>{
         setter(e.target.value);
@@ -26,6 +30,8 @@ const Login = () => {
             const response = await postToAPI('/auth/login', data);
             console.log(response);
             setSuccess(response);
+            getUser(setUser);
+            navigate('/');
         } catch(error){
             if(error.status && error.msg){
                 setError(error.msg);
@@ -41,17 +47,28 @@ const Login = () => {
         }
     }
 
+    // useEffect((), [])
+
     return (
         <div className='login'>
             {error && <div style={{ color: 'red' }}>{error}</div>}
             {success && <div style={{ color: 'green' }}>{success}</div>}
             <div className='form'>
                 <p> Login </p>
-                <input placeholder='Email'onChange={handleChange(setEmail)} value={email}/>
-                <input type='password' placeholder='Password'onChange={handleChange(setPassword)} value={password}/>
-                <button onClick={handleSubmit}> Log In </button>
+                <input className='search-input' placeholder='Email'onChange={handleChange(setEmail)} value={email}/>
+                <input className='search-input' type='password' placeholder='Password'onChange={handleChange(setPassword)} value={password}/>
+                <button className='button' onClick={handleSubmit}> Log In </button>
+                <p>Don't have an account yet? <Link to='/register'>Sign Up</Link></p>
+
             </div>
 
+            <p className='slogan'> Read. Share. Connect. </p>
+
+            <div className='bg'>
+                <img src={bg}/>
+            </div>
+
+            
         </div>
     );
 }

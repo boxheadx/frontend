@@ -1,8 +1,8 @@
 import React from 'react'
 
-const BookCard = ({book}) => {
+const BookCard = ({book, handleBookSelect}) => {
   return (
-    <div className='book-card'>
+    <div className='book-card' onClick={()=>{handleBookSelect(book.book_id)}}>
         <img src={book.cover_image_url}/>
         <p className='book-title'>{book.title}</p>
         <p className='book-author'>{book.username}</p>

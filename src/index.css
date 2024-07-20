@@ -1,3 +1,5 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +8,61 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-.nav-bar {
-    background-color: rgba(29, 23, 151, 0.569);
+.app{
+    display: inline;
 }
+
+.nav-bar {
+    z-index: 1000;
+    height: 120px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000;
+    padding: 0.5rem 1rem;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-bar i{
+    width: 10px;
+}
+
+
+.logo img {
+    height: 120px;
+    width: 120px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #555;
+}
+
+.profile-image-nav {
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+}
+
+.nav-item:active {
+    background-color: #777;
+}
+
 
 .book-card{
     border: transparent;
@@ -39,4 +93,440 @@
 
 .list-title {
     font-size: 20pt;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.search-input {
+    padding: 0.5rem 2rem 0.5rem 0.5rem; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    outline: none; 
+}
+
+.search-input:focus {
+    border-color: #555; 
+}
+
+.search-button {
+    position: absolute;
+    right: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #555;
+}
+
+.search-button i {
+    font-size: 1rem;
+}
+
+.search-button:hover {
+    color: #777;
+}
+
+.profile-menu {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    z-index: 1000;
+    width: 200px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.sidebar {
+    width: 250px;
+    color: #fff;
+    background-color: #000000;
+    opacity: 95%;
+    border-radius: 20px;
+    position: fixed;
+    left: 0;
+    height: 400px;
+    padding: 20px;
+    box-shadow: 6px 0 8px rgb(0, 0, 0);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.sidebar h2{
+    text-align: center;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-section {
+    margin-bottom: 20px;
+}
+
+.sidebar-section h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.sidebar-section ul li {
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+.sidebar-item {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-item:hover {
+    background-color: #575757;
+}
+
+.toggle-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, left 0.3s ease;
+    position: fixed;
+    top: 300px; /* Adjust based on your layout */
+    left: 230px; /* Adjust based on your sidebar width */
+}
+
+.toggle-button:hover {
+    background-color: #555;
+}
+
+.toggle-button.sidebar-hidden {
+    left: 0;
+}
+
+
+.home {
+    display: flex;
+    padding: 1rem;
+}
+
+.content {
+    flex-grow: 1;
+    margin-left: 300px; /* Adjust based on sidebar width */
+    transition: margin-left 0.3s ease;
+}
+
+.content.sidebar-hidden {
+    margin-left: 100px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.visible {
+        transform: translateX(0);
+    }
+    .content {
+        margin-left: 0;
+    }
+}
+
+
+.form{
+    border: transparent;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px #333;
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.form input{
+    margin: 10px;
+}
+
+.button {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 0.5rem 1rem; /* Padding around the text */
+    font-size: 10px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+.button:hover {
+    background-color: #333; /* Darker background on hover */
+}
+
+.button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5); /* Subtle white outline on focus */
+}
+
+.button:active {
+    background-color: #555; /* Even darker background when active */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3); /* Slightly less prominent outline when active */
+}
+
+.form p{
+    margin: 30px;
+    text-decoration: none;
+}
+
+/* Style for the select element */
+.select-dropdown {
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text color */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 0.5rem 1rem; /* Padding inside the select */
+    font-size: 16px; /* Font size */
+    font-family: Arial, Helvetica, sans-serif; /* Font family */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+/* Style for the select element on focus */
+.select-dropdown:focus {
+    border-color: #555; /* Darker border color on focus */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1); /* Subtle shadow on focus */
+}
+
+/* Style for the options */
+.select-dropdown option {
+    padding: 0.5rem; /* Padding inside the options */
+    background-color: #fff; /* White background for options */
+    color: #333; /* Dark text color for options */
+}
+
+/* Style for the select dropdown container */
+.select-container {
+    display: inline-block;
+    position: relative;
+}
+
+.login {
+    display: flex; /* Use Flexbox to arrange children side by side */
+    justify-content: space-between; /* Space out form and image */
+    align-items: center; /* Center items vertically */
+    height: 80vh; /* Full viewport height */
+     /* Optional: Add padding around the container */
+}
+
+.register {
+    display: flex; /* Use Flexbox to arrange children side by side */
+    justify-content: space-between; /* Space out form and image */
+    align-items: center; /* Center items vertically */
+    height: 80vh; /* Full viewport height */
+     /* Optional: Add padding around the container */
+}
+
+.form {
+    display: flex;
+    flex-direction: column; /* Arrange form elements vertically */
+    margin-right: 1rem; /* Space between form and image */
+    max-width: 350px; /* Adjust as needed */
+    width: 100%; /* Ensure form takes available width */
+    margin-top: 2rem;
+}
+
+.bg {
+    display: flex;
+    align-items: center; /* Center image vertically */
+    transform: scaleX(-1);
+}
+
+.login img{
+    width: 500px;
+    height: 80vh;
+    right: 0;
+}
+
+.register img{
+    width: 500px;
+    height: 80vh;
+    right: 0;
+}
+
+.slogan{
+    font-size: 30pt;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.nav-menu input{
+    width: 500px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.profile-picture {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.edit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: #555;
+}
+
+.profile-info {
+    width: 100%;
+    max-width: 400px;
+}
+
+.profile-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.profile-field label {
+    flex: 0 0 100px;
+    font-weight: bold;
+}
+
+.profile-field input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+.update-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.update-btn:hover {
+    background-color: #555;
+}
+
+.cover-image{
+    padding: 20px;
+}
+
+.book-cover{
+    width: 250px;
+    height: 350px;
+}
+
+.genre-card{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 7px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.genre-card:hover {
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
 }
