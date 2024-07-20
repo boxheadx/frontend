@@ -123,7 +123,7 @@
 
 .search-button {
     position: absolute;
-    right: 0;
+    right: 7px;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -507,6 +507,30 @@
     background-color: #555;
 }
 
+.book-info{
+    display: flex;
+    padding: 10px;
+}
+
+.info-box{
+    margin: 20px;
+    border: transparent;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    flex: 2;
+}
+
+.info-box .book-title-box{
+    font-size: 25pt;
+    background-color: #000000;
+    color: #fff;
+    border: transparent;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
 .cover-image{
     padding: 20px;
 }
@@ -529,4 +553,43 @@
     background-color: #333;
     border-color: #333;
     color: #fff;
+}
+
+.option-btn{
+    background-color: #000; 
+    color: #fff; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 0.5rem 1rem; /* Padding around the text */
+    font-size: 17pt;
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: block;
+    margin: 20px;
+    width: 220px;
+}
+
+.option-btn:hover {
+    background-color: #333; /* Darker background on hover */
+}
+
+.info-box .author-name{
+    font-size: 17pt;
+    text-align: center;
+    color: #000;
+    padding: 20px;
+}
+.info-box .publication-date{
+    color: #000;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.info-box .genres-box{
+    text-align: center;
+}
+.info-box .avg-rating{
+    text-align: center;
+    padding: 10px;
 }

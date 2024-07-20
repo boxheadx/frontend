@@ -16,7 +16,8 @@ const Home = ({ user, setUser }) => {
 
     useEffect(()=>{
         if(selectedBook){
-            navigate(`/book/${selectedBook}`);
+            const {avg_rating} = latestBooks.find(book => book.book_id = selectedBook);
+            navigate(`/book/${selectedBook}`, {state: {avg_rating}});
         }
         setSelectedBook(null);
     }, [selectedBook]);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { fetchFromAPI } from '../utils/API';
 import {BookInfo, Reviews} from './';
 
@@ -9,6 +9,9 @@ const BookDetails = () => {
   const [genres, setGenres] = useState(null);
   const [error, setError] = useState(null);
   const { book_id } = useParams();
+
+  const location = useLocation();
+  const { avg_rating } = location.state;
 
   const fetchDetails = async()=>{
     try{
@@ -36,7 +39,7 @@ const BookDetails = () => {
       {
         error && <p> Failed to fetch book details</p>
       }
-      {!error && <BookInfo bookDetails={bookDetails} genres={genres}/>}
+      {!error && <BookInfo bookDetails={bookDetails} genres={genres} avg_rating={avg_rating}/>}
       {!error && <Reviews book_id={book_id} />}
     </div>
   )
