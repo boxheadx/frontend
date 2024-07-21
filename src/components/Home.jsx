@@ -16,8 +16,7 @@ const Home = ({ user, setUser }) => {
 
     useEffect(()=>{
         if(selectedBook){
-            const {avg_rating} = latestBooks.find(book => book.book_id = selectedBook);
-            navigate(`/book/${selectedBook}`, {state: {avg_rating}});
+             navigate(`/book/${selectedBook}`);
         }
         setSelectedBook(null);
     }, [selectedBook]);
@@ -37,17 +36,18 @@ const Home = ({ user, setUser }) => {
 
     return (
         <div className='home'>
-            {user && <Sidebar isVisible={isSidebarVisible} />}
+            {/* {user && <Sidebar isVisible={isSidebarVisible} />}
         
             {user && <button
                 className={`toggle-button ${isSidebarVisible ? '' : 'sidebar-hidden'}`}
                 onClick={toggleSidebar}>
                 {isSidebarVisible ? '<' : '>'}
-            </button>}
-            <div className={`content ${isSidebarVisible ? 'sidebar-visible' : 'sidebar-hidden'}`}>
+            </button>} */}
+            {/* <div className={`content ${isSidebarVisible ? 'sidebar-visible' : 'sidebar-hidden'}`}> */}
+                <div className='browse-content'>
                 <p className='list-title'>Latest</p>
                 <Books books={latestBooks} handleBookSelect={handleBookSelect} />
-                <hr/>
+                <hr style={{width: `${latestBooks.length * 225}px`}}/>
                 <p className='list-title'>Top Rated</p>
                 <Books books={latestBooks} handleBookSelect={handleBookSelect} />
             </div>

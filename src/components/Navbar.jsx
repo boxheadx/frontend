@@ -13,6 +13,7 @@ const Navbar = ({user, setUser}) => {
 
     const handleSearchSubmit = async(e) => {
         e.preventDefault();
+        setSearchTerm('');
         navigate(`/search/${searchTerm}`);
     }
 
@@ -40,8 +41,9 @@ const Navbar = ({user, setUser}) => {
             </div>
             <div className='nav-menu'>
                 <Link className='nav-item' to='/'>Home</Link>
-                <Link className='nav-item' to='/browse'>Browse</Link>
+                <Link className='nav-item' to='/authors'>Authors</Link>
                 <Link className='nav-item' to='/genres'>Genres</Link>
+                <Link className='nav-item' to='/shelves'>Shelves</Link>
                 <form onSubmit={handleSearchSubmit} className='search-form'>
                     <div className='search-container'>
                         <input
