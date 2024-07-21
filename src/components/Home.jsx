@@ -46,9 +46,9 @@ const Home = ({ user, setUser }) => {
             </button>}
             <div className={`content ${isSidebarVisible ? 'sidebar-visible' : 'sidebar-hidden'}`}>
                 <p className='list-title'>Latest</p>
-                <Books books={latestBooks} handleBookSelect={handleBookSelect}/>
+                <Books books={latestBooks} handleBookSelect={handleBookSelect} />
                 <p className='list-title'>Top Rated</p>
-                <Books books={latestBooks} handleBookSelect={handleBookSelect}/>
+                <Books books={latestBooks} handleBookSelect={handleBookSelect} />
             </div>
         </div>
     );

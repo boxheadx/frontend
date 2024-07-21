@@ -2,7 +2,7 @@ import React from 'react'
 import {GenreCard} from './'
 import { Rating } from '@mui/material'
 
-const BookInfo = ({bookDetails, genres, avg_rating}) => {
+const BookInfo = ({bookDetails, genres}) => {
   return (
     <div className='book-info'>
         {bookDetails && genres && (
@@ -19,7 +19,7 @@ const BookInfo = ({bookDetails, genres, avg_rating}) => {
                             return <GenreCard key={i} genre={genre}/>
                         })}
                     </div>
-                    <div className='avg-rating'>{<Rating name='avg-rating' value={avg_rating} size='large' precision={0.5} readOnly/>}</div>
+                    <div className='avg-rating'>{<Rating name='avg-rating' value={bookDetails[0].avg_rating} size='large' precision={0.5} readOnly/>}</div>
                 </div>
                 <div className='book-options'>
                     <button className='option-btn'> Want to read</button>

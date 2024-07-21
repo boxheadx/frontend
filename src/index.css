@@ -593,3 +593,65 @@
     text-align: center;
     padding: 10px;
 }
+
+.reviews{
+    margin: 20px;
+}
+
+.reviews-title{
+    text-align: center;
+    font-size: 25pt;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.review-card{
+    border: transparent;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px;
+    display: flex;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+}
+
+.review-card .reviewer img{
+    border-radius: 50%;
+    border: 3px solid #000000;
+    cursor: pointer;
+}
+
+.review-username{
+    font-size: 15pt;
+    margin: 5px;
+}
+
+.review-card .review-stuffs{
+    text-align: left;
+    flex: 2;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.review-stuffs .review-title{
+    font-size: 17pt;
+    margin: 3px;
+}
+
+.no-reviews{
+    text-align: center;
+    margin:10px;
+    font-size: 16pt;
+}
+
+.user-review{
+    border: transparent;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.own-review{
+    text-align: center;
+    font-size: 16pt;
+    font-family: 'Times New Roman', Times, serif;
+}
