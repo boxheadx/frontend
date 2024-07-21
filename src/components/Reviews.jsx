@@ -10,7 +10,8 @@ const Reviews = ({book_id, user, setUpdated}) => {
     const [error, setError] = useState(null);
     
     const checkUserReview = (reviews)=>{
-        if(reviews){
+        if(reviews && user){
+            console.log('checking user review')
             const user_review =reviews.find(review=>review.username == user[0].username);
             setUserReview(user_review);
         }
@@ -21,13 +22,16 @@ const Reviews = ({book_id, user, setUpdated}) => {
             const bookReviews = await fetchFromAPI(`/book/review/${book_id}`);
             checkUserReview(bookReviews);
             setReviews(bookReviews);
+            console.log('hello')
         } catch(err){
+            console.log(err);
             if(err.msg) setError(err.msg);
             else setError(err);
         }
     }
 
     useEffect(()=>{
+        console.log('did it')
         fetchReviews();
     }, [book_id, user, posted])
 
