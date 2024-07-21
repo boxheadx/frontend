@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Box } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import { postToAPI } from '../utils/API';
 
-const PostReview = ({book_id, user, setPosted}) => {
+const PostReview = ({book_id, user, setPosted, setUpdated}) => {
   const [rating, setRating] = useState(0);
   const [reviewTitle, setReviewTitle] = useState('');
   const [review, setReview] = useState('');
@@ -19,6 +19,7 @@ const PostReview = ({book_id, user, setPosted}) => {
         rating: rating.toString()
     });
     setPosted(true);
+    setUpdated(true);
    } catch(err){
     if(err.msg) setError(err.msg);
     else setError('Failed');

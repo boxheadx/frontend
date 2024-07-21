@@ -10,6 +10,7 @@ const BookDetails = () => {
   const [loggedOut, setLoggedOut] = useState(true);
   const [genres, setGenres] = useState(null);
   const [error, setError] = useState(null);
+  const [updated, setUpdated] = useState(false);
   const { book_id } = useParams();
 
   const fetchDetails = async()=>{
@@ -42,7 +43,7 @@ const BookDetails = () => {
   useEffect(()=>{
     getUser();
     fetchDetails();
-  }, [])
+  }, [updated])
 
   return (
     <div className='details'>
@@ -50,7 +51,7 @@ const BookDetails = () => {
         error && <p> Failed to fetch book details</p>
       }
       {!error && <BookInfo bookDetails={bookDetails} genres={genres}/>}
-      {!error && <Reviews book_id={book_id} user={user}/>}
+      {!error && <Reviews book_id={book_id} user={user} setUpdated={setUpdated}/>}
     </div>
   )
 }

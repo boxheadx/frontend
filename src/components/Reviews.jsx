@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { fetchFromAPI } from '../utils/API';
 import {ReviewCard, PostReview} from './';
 
-const Reviews = ({book_id, user}) => {
+const Reviews = ({book_id, user, setUpdated}) => {
 
     const [reviews, setReviews] = useState(null);
     const [userReview, setUserReview] = useState(null);
@@ -42,7 +42,7 @@ const Reviews = ({book_id, user}) => {
                 </div>
             ) || (
                 user && (<div className='user-review'>
-                    <PostReview book_id={book_id} user={user} setPosted={setPosted}/>
+                    <PostReview book_id={book_id} user={user} setPosted={setPosted} setUpdated={setUpdated}/>
                 </div>) || (
                     <div className='user-review'>
                         <p className='own-review'>Login in to post a review</p>

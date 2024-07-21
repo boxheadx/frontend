@@ -47,6 +47,7 @@ const Home = ({ user, setUser }) => {
             <div className={`content ${isSidebarVisible ? 'sidebar-visible' : 'sidebar-hidden'}`}>
                 <p className='list-title'>Latest</p>
                 <Books books={latestBooks} handleBookSelect={handleBookSelect} />
+                <hr/>
                 <p className='list-title'>Top Rated</p>
                 <Books books={latestBooks} handleBookSelect={handleBookSelect} />
             </div>
