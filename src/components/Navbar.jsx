@@ -42,8 +42,8 @@ const Navbar = ({user, setUser}) => {
             <div className='nav-menu'>
                 <Link className='nav-item' to='/'>Home</Link>
                 <Link className='nav-item' to='/authors'>Authors</Link>
-                <Link className='nav-item' to='/genres'>Genres</Link>
-                <Link className='nav-item' to='/shelves'>Shelves</Link>
+                <Link className='nav-item' to='/people'>Genres</Link>
+                {user && <Link className='nav-item' to='/shelves'>Shelves</Link>}
                 <form onSubmit={handleSearchSubmit} className='search-form'>
                     <div className='search-container'>
                         <input

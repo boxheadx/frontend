@@ -110,7 +110,7 @@
   
 
 .list-title {
-    font-size: 20pt;
+    font-size: 24pt;
     margin: 20px;
 }
 
@@ -680,10 +680,21 @@
 }
 
 .browse-content{
+    width: 1450px;
     margin: 10px;
     padding: 10px;
+    display: inline-block;
 }
 
 .browse-content hr{
     margin: 20px;
+}
+
+.shelf-card{
+    border: transparent;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px;
+    display: flex;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
 }

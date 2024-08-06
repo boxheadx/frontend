@@ -50,7 +50,7 @@ const BookDetails = () => {
       {
         error && <p> Failed to fetch book details</p>
       }
-      {!error && <BookInfo bookDetails={bookDetails} genres={genres}/>}
+      {!error && <BookInfo bookDetails={bookDetails} genres={genres} book_id={book_id}/>}
       {!error && <Reviews book_id={book_id} user={user} setUpdated={setUpdated}/>}
     </div>
   )

@@ -14,3 +14,4 @@ export { default as Reviews } from './Reviews';
 export { default as GenreCard } from './GenreCard';
 export { default as PostReview } from './PostReview';
 export { default as ReviewCard } from './ReviewCard';
+export { default as Shelves } from './Shelves';

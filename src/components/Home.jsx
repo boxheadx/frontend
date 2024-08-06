@@ -47,7 +47,7 @@ const Home = ({ user, setUser }) => {
                 <div className='browse-content'>
                 <p className='list-title'>Latest</p>
                 <Books books={latestBooks} handleBookSelect={handleBookSelect} />
-                <hr style={{width: `${latestBooks.length * 225}px`}}/>
+                <hr style={{width: `${latestBooks.length * 110}px`}}/>
                 <p className='list-title'>Top Rated</p>
                 <Books books={latestBooks} handleBookSelect={handleBookSelect} />
             </div>

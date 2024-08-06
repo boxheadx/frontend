@@ -1,8 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {GenreCard} from './'
 import { Rating } from '@mui/material'
+import { fetchFromAPI, postToAPI } from '../utils/API';
 
-const BookInfo = ({bookDetails, genres}) => {
+const BookInfo = ({bookDetails, genres, book_id}) => {
+
+    const [error, setError] = useState(null);
+    const [shelves, setShelves] = useState([]);
+    const [success, setSuccess] = useState(null);
+
+    const handleButton = async(i)=>{
+        setError(null);
+        setSuccess(null);
+
+        if(shelves.length){        
+            postToAPI(`/shelves/${shelves[i].shelf_id}/addbook`, { book_id: book_id}).then((res)=>{
+            setSuccess(res);
+            }).catch((err)=>{
+                console.log(err);
+                if(err.msg) {
+                    setError(err.msg)
+                } else{
+                    setError('Error!');
+                }
+            });
+        } else{
+
+            setError('You must log in first!');
+        }
+
+    }
+
+    useEffect(()=>{
+        fetchFromAPI('/shelves/shelfids').then((shelves)=>{
+            setShelves(shelves);
+            console.log(shelves);
+        }).catch((err)=>{             
+            if(err.msg) {
+            setError(err.msg)
+        } else{
+            // setError('Error!');
+        } 
+    });
+    }, []);
+    
   return (
     <div className='book-info'>
         {bookDetails && genres && (
@@ -22,9 +63,11 @@ const BookInfo = ({bookDetails, genres}) => {
                     <div className='avg-rating'>{<Rating name='avg-rating' value={bookDetails[0].avg_rating} size='large' precision={0.5} readOnly/>}</div>
                 </div>
                 <div className='book-options'>
-                    <button className='option-btn'> Want to read</button>
-                    <button className='option-btn'> Reading</button>
-                    <button className='option-btn'> Read </button>
+                    <button className='option-btn' onClick={()=>{handleButton(0)}}> Want to read</button>
+                    <button className='option-btn' onClick={()=>{handleButton(1)}}> Reading</button>
+                    <button className='option-btn' onClick={()=>{handleButton(2)}}> Read </button>
+                    {error && <div style={{ color: 'white', backgroundColor: 'red', padding: '20px', border: '1px solid red', borderRadius: '20px',marginTop: '70px', marginLeft: '40px', flex: 1, marginRight: '50px', height: '20px', textAlign: 'center', paddingBottom: '40px' }}><p>{error}</p></div>}
+                    {success && <div style={{ color: 'white', backgroundColor: 'green', padding: '20px', border: '1px solid green', borderRadius: '20px', marginTop: '30px', marginLeft: '40px', marginRight: '50px', height: '20px', textAlign: 'center', paddingBottom: '40px'}}>{success}</div>}
                 </div>
             </>
         )}
