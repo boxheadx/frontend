@@ -17,8 +17,8 @@ const Home = ({ user, setUser }) => {
     useEffect(()=>{
         if(selectedBook){
              navigate(`/book/${selectedBook}`);
+             setSelectedBook(null);
         }
-        setSelectedBook(null);
     }, [selectedBook]);
 
     useEffect(() => {

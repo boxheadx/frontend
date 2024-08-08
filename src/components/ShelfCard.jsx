@@ -4,7 +4,7 @@ import readingPic from '../assets/readingpic.jpg'
 import finishedPic from '../assets/finished.png'
 import shelfpic from '../assets/shelf.png';
 
-const ShelfCard = ({shelf}) => {
+const ShelfCard = ({shelf, handleShelfSelect}) => {
 
   const shelfImg = (shelf)=>{
     if(shelf.name == 'Want to Read') return wantToReadPic;
@@ -13,7 +13,7 @@ const ShelfCard = ({shelf}) => {
     return shelfpic
   }
   return (
-    <div className='shelf-card'>
+    <div className='shelf-card' onClick={()=>{handleShelfSelect(shelf.shelf_id)}}>
       <img src={shelfImg(shelf)} width={70} height={70}/>
       <p>{shelf.name}</p>
     </div>

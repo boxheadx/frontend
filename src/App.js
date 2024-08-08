@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar, Profile, Search, Home, BookDetails, Login, Register, PostBook, Shelves } from './components';
+import { Navbar, Profile, Search, Home, BookDetails, Login, Register, PostBook, Shelves, Shelf } from './components';
 import './index.css';
 import getUser from './utils/Auth';
 
@@ -24,6 +24,7 @@ const App = () => {
                     <Route path='/register' element={<Register/>} />
                     <Route path='/author/post' element={<PostBook/>} />
                     <Route path='/shelves' element={<Shelves user={user} setUser={setUser}/>} />
+                    <Route path='/shelf/:shelf_id' element={<Shelf user={user} setUser={setUser}/>} />
                 </Routes>
             </div>
         </BrowserRouter>

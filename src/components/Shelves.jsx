@@ -3,6 +3,7 @@ import { fetchFromAPI, postToAPI } from '../utils/API';
 import addicon from '../assets/add.png';
 import ShelfCard from './ShelfCard';
 import { TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Shelves = ({user, setUser}) => {
 
@@ -10,6 +11,9 @@ const Shelves = ({user, setUser}) => {
   const [customShelves, setCustomShelves] = useState([]);
   const [newShelf, setNewShelf] = useState(null);
   const [newShelfError, setNewShelfError] = useState(null);
+  const [selected, setSelected] = useState(null);
+
+  const navigate = useNavigate();
 
   const getUser = async() =>{
     try{
@@ -55,6 +59,10 @@ const Shelves = ({user, setUser}) => {
     }
   }
 
+  const handleShelfSelect = (shelf_id)=>{
+    setSelected(shelf_id);
+  }
+
   useEffect(()=>{
     if(!user){
       getUser();
@@ -65,14 +73,30 @@ const Shelves = ({user, setUser}) => {
     }
   },[]);
 
+  useEffect(()=>{
+    if(user){
+      getShelves();
+      getCustomShelves();
+    }
+  },[user]);
+
+  useEffect(()=>{
+    if(selected){
+      navigate(`/shelf/${selected}`);
+      setSelected(null);
+      console.log('shelf selected')
+    }
+  }, selected)
+
   return (
     <div>
       {!user && <p>You are not logged in!</p>}
+      {user && !shelves && <p>Loading shelves...</p>}
       {user && shelves &&(
         <div className='shelves-container'>
       {    
           shelves.map((shelf)=>{
-            return <ShelfCard key={shelf.shelf_id} shelf={shelf}/>
+            return <ShelfCard key={shelf.shelf_id} shelf={shelf} handleShelfSelect={handleShelfSelect}/>
           })
       }
         <h1 style={{margin: "30px"}}> Custom Shelves </h1>
@@ -80,7 +104,7 @@ const Shelves = ({user, setUser}) => {
           <>
           {           
             customShelves.map((shelf)=>{
-            return <ShelfCard key={shelf.shelf_id} shelf={shelf}/>
+            return <ShelfCard key={shelf.shelf_id} shelf={shelf} handleShelfSelect={handleShelfSelect}/>
           })}
           </>
         )}
