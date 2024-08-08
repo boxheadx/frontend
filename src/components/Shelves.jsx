@@ -1,8 +1,15 @@
-import React, { useEffect } from 'react'
-import { fetchFromAPI } from '../utils/API';
-import nopic from '../assets/no-picture.png'
+import React, { useEffect, useState } from 'react'
+import { fetchFromAPI, postToAPI } from '../utils/API';
+import addicon from '../assets/add.png';
+import ShelfCard from './ShelfCard';
+import { TextField } from '@mui/material';
 
 const Shelves = ({user, setUser}) => {
+
+  const [shelves, setShelves] = useState([]);
+  const [customShelves, setCustomShelves] = useState([]);
+  const [newShelf, setNewShelf] = useState(null);
+  const [newShelfError, setNewShelfError] = useState(null);
 
   const getUser = async() =>{
     try{
@@ -14,18 +21,81 @@ const Shelves = ({user, setUser}) => {
   }
 
   const getShelves = async()=>{
-    
+
+    try{
+      const shelves = await fetchFromAPI('/shelves/shelfids');
+      setShelves(shelves);
+    } catch(err){
+      console.log(err)
+    }
+  }
+
+  const getCustomShelves = async()=>{
+    try{
+      const shelves = await fetchFromAPI('/shelves');
+      setCustomShelves(shelves);
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+  const addShelf = async()=>{
+    try{
+      setNewShelf(null);
+      setNewShelfError(null);
+      await postToAPI('/shelves/create', {name: newShelf});
+      getCustomShelves();
+    } catch(err){
+      if(err.msg){
+        setNewShelfError(err.msg);
+      }
+      else{
+        setNewShelfError(err);
+      }
+    }
   }
 
   useEffect(()=>{
     if(!user){
       getUser();
     }
+    if(user){
+      getShelves();
+      getCustomShelves();
+    }
   },[]);
 
   return (
     <div>
       {!user && <p>You are not logged in!</p>}
+      {user && shelves &&(
+        <div className='shelves-container'>
+      {    
+          shelves.map((shelf)=>{
+            return <ShelfCard key={shelf.shelf_id} shelf={shelf}/>
+          })
+      }
+        <h1 style={{margin: "30px"}}> Custom Shelves </h1>
+        {customShelves && (
+          <>
+          {           
+            customShelves.map((shelf)=>{
+            return <ShelfCard key={shelf.shelf_id} shelf={shelf}/>
+          })}
+          </>
+        )}
+        <TextField
+        label="New Shelf"
+        variant="outlined"
+        value={newShelf}
+        onChange={(e) => setNewShelf(e.target.value)}
+        sx={{ margin: '26px' }}
+      />
+        <img src={addicon} height={50} width={50} style={{margin: '26px', cursor: 'pointer'}} onClick={addShelf}/>
+        <br/>
+        {newShelfError && <div style={{ color: 'white', backgroundColor: 'red', padding: '30px', border: '1px solid red', borderRadius: '20px',marginTop: '70px', marginLeft: '100px', flex: 1, marginRight: '30px', height: '60px', textAlign: 'center', paddingBottom: '40px' }}><p>{newShelfError}</p></div>}
+        </div>
+      )}
      
     </div>
   )

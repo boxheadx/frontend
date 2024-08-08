@@ -284,7 +284,7 @@ const PostBook = () => {
       </Button>
     </Box>
     {error && <div style={{ color: 'white', backgroundColor: 'red', padding: '30px', border: '1px solid red', borderRadius: '20px',marginTop: '70px', marginLeft: '100px', flex: 1, marginRight: '30px', height: '60px', textAlign: 'center', paddingBottom: '40px' }}><p>{error}</p></div>}
-    {success && <div style={{ color: 'white', backgroundColor: 'green', padding: '30px', border: '1px solid green', borderRadius: '20px', marginTop: '30px', marginLeft: '30px'}}>Book has been posted!</div>}
+    {success && <div style={{ color: 'white', backgroundColor: 'green', padding: '30px', border: '1px solid green', borderRadius: '20px', marginTop: '30px', marginLeft: '30px', height: '60px', textAlign: 'center'}}>Book has been posted!</div>}
     </div>
   );
 };

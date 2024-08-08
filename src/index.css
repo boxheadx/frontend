@@ -697,4 +697,18 @@
     margin: 30px;
     display: flex;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.shelf-card p{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 20px;
+    flex: 1;
+    font-size: 17pt;
+}
+
+.shelf-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
