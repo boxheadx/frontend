@@ -53,7 +53,7 @@ const Home = ({ user, setUser }) => {
             {/* <div className={`content ${isSidebarVisible ? 'sidebar-visible' : 'sidebar-hidden'}`}> */}
                 <div className='browse-content'>
                 <p className='list-title'>Latest</p>
-                {!latestBooks && <Backdrop
+                {!latestBooks.length && <Backdrop
                     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                     open>
                     <CircularProgress color="inherit" />
