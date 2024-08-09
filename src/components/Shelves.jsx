@@ -100,7 +100,7 @@ const Shelves = ({user, setUser}) => {
                     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                     open>
                     <CircularProgress color="inherit" />
-                    </Backdrop>}https://github.com/boxheadx/SaphooMhicha
+                    </Backdrop>}
       {user && shelves.length &&(
         <div className='shelves-container'>
       {    
