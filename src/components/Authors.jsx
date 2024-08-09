@@ -35,8 +35,8 @@ const Authors = ({user, setUser}) => {
 
     return (
         <>
-            <h1 style={{margin: "20px"}}>Top Rated Authors</h1>
-            <div className='shelf-books-container'>
+            <h1 style={{paddingLeft: "60px", paddingTop: "20px"}}>Top Rated Authors</h1>
+            <div className='shelf-books-container' style={{padding: "50px"}}>
                 {
                     topAuthors.map((author)=>{
                         return <AuthorCard author_id={author.author_id} user_id={author.user_id} rating={author.average_rating} author_name={author.author_name}/>

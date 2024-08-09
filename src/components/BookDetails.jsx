@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchFromAPI } from '../utils/API';
 import {BookInfo, Reviews} from './';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 const BookDetails = () => {
 
@@ -50,6 +51,11 @@ const BookDetails = () => {
       {
         error && <p> Failed to fetch book details</p>
       }
+      {!bookDetails && <Backdrop
+                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open>
+                    <CircularProgress color="inherit" />
+                    </Backdrop>}
       {!error && <BookInfo bookDetails={bookDetails} genres={genres} book_id={book_id}/>}
       {!error && <Reviews book_id={book_id} user={user} setUpdated={setUpdated}/>}
     </div>

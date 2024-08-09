@@ -33,8 +33,8 @@ const AuthorCard = ({author_name, user_id, author_id, rating}) => {
 
     return (
         <div className='review-card' style={{display: "flex", cursor: "pointer"}} onClick={handleClick}>
-                {authorInfo && (<><img src={authorInfo.profile_picture_url || nopic} width={50} height={50} style={{ borderRadius: "50%", border: "2px solid #fff",cursor: "pointer"}}/>
-                <p className='review-title' style={{margin: "20px", flex: 1, textAlign: "center"}}>{author_name}</p>
+                {authorInfo && (<><img src={authorInfo.profile_picture_url || nopic} width={70} height={70} style={{ borderRadius: "50%", border: "2px solid #fff",cursor: "pointer"}}/>
+                <p className='review-title' style={{margin: "20px", flex: 1, textAlign: "center", fontSize: "17pt"}}>{author_name}</p>
                 <Rating className='review-rating' size='medium' value={rating} style={{margin: "20px"}} readOnly/>
                 </>)}
         </div>

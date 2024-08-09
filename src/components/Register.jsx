@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { postToAPI } from '../utils/API';
 import { Link } from 'react-router-dom';
 import bg from '../assets/bg.png';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 const Register = () => {
 
@@ -11,6 +12,7 @@ const Register = () => {
     const [role, setRole] = useState('0');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const [clicked, setClicked] = useState(false);
 
 
     const handleChange = (setter) => (e) =>{
@@ -19,6 +21,8 @@ const Register = () => {
     }
 
     const handleSubmit = async () => {
+
+        setClicked(true);
 
         setError(null);
         setSuccess(null);
@@ -33,6 +37,10 @@ const Register = () => {
             const response = await postToAPI('/auth/register', data);
             console.log(response);
             setSuccess(response);
+            setClicked(false);
+            setUsername('');
+            setEmail('');
+            setPassword('')
         } catch(error){
             if(error.status && error.msg){
                 setError(error.msg);
@@ -47,15 +55,21 @@ const Register = () => {
                 setEmail('');
                 setPassword('');
             }
+            setClicked(false);
         }
     }
 
     return (
         <div className='register'>
 
+            <div className='form'>
             {error && <div style={{ color: 'red' }}>{error}</div>}
             {success && <div style={{ color: 'green' }}>{success}</div>}
-            <div className='form'>
+            {!error && !success && clicked && <Backdrop
+                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open>
+                    <CircularProgress color="inherit" />
+                    </Backdrop>}
                 <p> Register </p>
                 <input className='search-input' placeholder='Username' onChange={handleChange(setUsername)} value={username}/>
                 <input className='search-input' placeholder='Email'onChange={handleChange(setEmail)} value={email}/>
