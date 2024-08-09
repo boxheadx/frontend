@@ -61,6 +61,7 @@ const BookInfo = ({bookDetails, genres, book_id}) => {
                         })}
                     </div>
                     <div className='avg-rating'>{<Rating name='avg-rating' value={bookDetails[0].avg_rating} size='large' precision={0.5} readOnly/>}</div>
+                    <p className='description' style={{textAlign: 'center', border: "1px solid black", borderRadius: "10px", margin: "10px", padding: "15px"}}>{ bookDetails[0].description }</p>
                 </div>
                 <div className='book-options'>
                     <button className='option-btn' onClick={()=>{handleButton(0)}}> Want to read</button>

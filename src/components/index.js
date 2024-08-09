@@ -17,3 +17,5 @@ export { default as ReviewCard } from './ReviewCard';
 export { default as Shelves } from './Shelves';
 export { default as ShelfCard } from './ShelfCard';
 export { default as Shelf } from './Shelf';
+export { default as Authors } from './Authors';
+export { default as AuthorProfile } from './AuthorProfile';
