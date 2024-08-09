@@ -42,6 +42,7 @@ const Shelves = ({user, setUser}) => {
       setFetched(true);
       setCustomShelves(shelves);
     } catch(err){
+      setFetched(true);
       console.log(err);
     }
   }
@@ -99,7 +100,7 @@ const Shelves = ({user, setUser}) => {
                     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                     open>
                     <CircularProgress color="inherit" />
-                    </Backdrop>}
+                    </Backdrop>}https://github.com/boxheadx/SaphooMhicha
       {user && shelves.length &&(
         <div className='shelves-container'>
       {    
