@@ -55,6 +55,8 @@ const Shelves = ({user, setUser}) => {
       await postToAPI('/shelves/create', {name: newShelf});
       getCustomShelves();
     } catch(err){
+
+      setFetched(true);
       if(err.msg){
         setNewShelfError(err.msg);
       }
