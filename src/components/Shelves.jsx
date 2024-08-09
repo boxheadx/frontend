@@ -4,6 +4,7 @@ import addicon from '../assets/add.png';
 import ShelfCard from './ShelfCard';
 import { TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 const Shelves = ({user, setUser}) => {
 
@@ -12,6 +13,7 @@ const Shelves = ({user, setUser}) => {
   const [newShelf, setNewShelf] = useState(null);
   const [newShelfError, setNewShelfError] = useState(null);
   const [selected, setSelected] = useState(null);
+  const [fetched, setFetched] = useState(false);
 
   const navigate = useNavigate();
 
@@ -91,8 +93,12 @@ const Shelves = ({user, setUser}) => {
   return (
     <div>
       {!user && <p>You are not logged in!</p>}
-      {user && !shelves && <p>Loading shelves...</p>}
-      {user && shelves &&(
+      {user && !shelves.length && !fetched && <Backdrop
+                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open>
+                    <CircularProgress color="inherit" />
+                    </Backdrop>}
+      {user && shelves.length &&(
         <div className='shelves-container'>
       {    
           shelves.map((shelf)=>{

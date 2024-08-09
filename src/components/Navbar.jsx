@@ -32,12 +32,16 @@ const Navbar = ({user, setUser}) => {
         navigate('/');
     }
 
+    const logoClicked = ()=>{
+        navigate('/');
+    }
+
     console.log(user);
 
     return (
         <div className='nav-bar'>
             <div className='logo'>
-                <img src={logo}/>
+                <img src={logo} onClick={logoClicked} style={{cursor: "pointer"}}/>
             </div>
             <div className='nav-menu'>
                 <Link className='nav-item' to='/'>Home</Link>

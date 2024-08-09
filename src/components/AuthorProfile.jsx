@@ -27,7 +27,7 @@ const AuthorProfile = () => {
 
     const getBooks = async()=>{
         try{
-            const author_id = id.split('x')[0];
+            const author_id = id.split('x')[1];
             const books = await fetchFromAPI(`/author/${author_id}/books`);
             setBooks(books);
         } catch(err){
