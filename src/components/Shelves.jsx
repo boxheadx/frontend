@@ -39,6 +39,7 @@ const Shelves = ({user, setUser}) => {
   const getCustomShelves = async()=>{
     try{
       const shelves = await fetchFromAPI('/shelves');
+      setFetched(true);
       setCustomShelves(shelves);
     } catch(err){
       console.log(err);
@@ -47,6 +48,7 @@ const Shelves = ({user, setUser}) => {
 
   const addShelf = async()=>{
     try{
+      setFetched(false);
       setNewShelf(null);
       setNewShelfError(null);
       await postToAPI('/shelves/create', {name: newShelf});
@@ -93,7 +95,7 @@ const Shelves = ({user, setUser}) => {
   return (
     <div>
       {!user && <p>You are not logged in!</p>}
-      {user && !shelves.length && !fetched && <Backdrop
+      {(user && !shelves.length) || !fetched && <Backdrop
                     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                     open>
                     <CircularProgress color="inherit" />

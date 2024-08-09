@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchFromAPI } from '../utils/API';
 import ShelfBookCard from './ShelfBookCard';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 const Shelf = ({user, setUser}) => {
     const { shelf_id } = useParams();
@@ -53,6 +54,11 @@ const Shelf = ({user, setUser}) => {
   return (
     <div>
         {error && <p>{error}</p>}
+        {!error && !books.length && <Backdrop
+                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open>
+                    <CircularProgress color="inherit" />
+                    </Backdrop>}
         {user && !error && (
             <div className='shelf-books-container'>
                 {books.map((book)=>{ return <ShelfBookCard book={book} key={book.book_id} shelf_id={shelf_id} handleRemove={handleRemove}/> })}
