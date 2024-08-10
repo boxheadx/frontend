@@ -61,7 +61,7 @@ const Search = () => {
   return (
     <div className='search-result'>
       <h1>Search results for '<a style={{color: 'blue'}}>{query}</a>'</h1>
-     { searchResult.length && <Books books={searchResult} handleBookSelect={handleBookSelect}/>}
+     { searchResult.length && !searching && <Books books={searchResult} handleBookSelect={handleBookSelect}/>}
      { (error || !searchResult.length) && fetched && !searching && <p> No results! </p>}
      {searching && <Backdrop
                     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
