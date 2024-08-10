@@ -10,6 +10,7 @@ const Search = () => {
   const [error, setError] = useState(null); 
   const [selectedBook, setSelectedBook] = useState(null);
   const [fetched, setFetched] = useState(false);
+  const [searching, setSearching] = useState(true);
 
   const navigate = useNavigate();
   
@@ -37,8 +38,10 @@ const Search = () => {
       console.log(results)
       setSearchResult(results);
       setFetched(true);
+      setSearching(false);
 
     } catch(err){
+      setSearching(false);
       setFetched(true);
       console.log(err)
       if(err.msg){
@@ -58,8 +61,8 @@ const Search = () => {
     <div className='search-result'>
       <h1>Search results for '<a style={{color: 'blue'}}>{query}</a>'</h1>
      { searchResult.length && <Books books={searchResult} handleBookSelect={handleBookSelect}/>}
-     { (error || !searchResult.length) && fetched && <p> No results! </p>}
-     {!searchResult.length && !fetched && <Backdrop
+     { (error || !searchResult.length) && fetched && !searching && <p> No results! </p>}
+     {searching && <Backdrop
                     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                     open>
                     <CircularProgress color="inherit" />
