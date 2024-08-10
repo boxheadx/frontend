@@ -34,7 +34,8 @@ const PostBook = () => {
   };
 
   const handleDateChange = (date) => {
-    setBookDetails({ ...bookDetails, publicationDate: date });
+    const adjustedDate = date.startOf('day');
+    setBookDetails({ ...bookDetails, publicationDate: adjustedDate });
   };
 
   const handleFileChange = (e) => {
