@@ -34,8 +34,8 @@ const PostBook = () => {
   };
 
   const handleDateChange = (date) => {
-    const adjustedDate = date.startOf('day');
-    setBookDetails({ ...bookDetails, publicationDate: adjustedDate });
+    const localDate = date.format('YYYY-MM-DD');
+    setBookDetails({ ...bookDetails, publicationDate: localDate });
   };
 
   const handleFileChange = (e) => {
