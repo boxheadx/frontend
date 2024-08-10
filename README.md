@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# SaphooMhicha
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is developed as a part of the Database Management System (DBMS) course by Matina Tuladhar (THA078BEI047) and Sajen Maharjan (THA078BEI048).
 
 ## Available Scripts
 
